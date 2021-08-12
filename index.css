@@ -37,4 +37,18 @@ button {
 #Audio-Control button:not(.active):hover {
   background: rgba(204, 204, 204, 0.3);
 }
+
+body {
+  height: 200rem;
+}
+
+.main-content {
+  height: 40%;
+  background-color: pink;
+}
+
+.footer-content {
+  height: 20%;
+  background-color: powderblue;
+}
 /*# sourceMappingURL=index.css.map */
