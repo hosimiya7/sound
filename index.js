@@ -19,6 +19,7 @@ function getId(dom) {
   if (scrollTop > 800 && scrollTop < 1200) {
     return 'sizuku'
   }
+  return null
 }
 
 $(function () {
@@ -41,9 +42,13 @@ $(function () {
   $(window).scroll(function () {
     const sound = new Sound(getId($(this)))
     const sounds = new Sounds()
-    console.log(getId($(this)))
+    console.log(document.querySelectorAll('audio'))
+    console.log(document.querySelectorAll('audio').forEach(audio => audio.pause()))
     if (!sounds.isMuted()) {
       sound.playSound()
+      if (!(getId($(this)))){
+        document.querySelectorAll('audio').forEach(audio => audio.pause())
+      }
     }
   });
 });
@@ -58,7 +63,9 @@ class Sound {
   }
 
   playSound() {
-    this.dom.play()
+    if(this.dom){
+      this.dom.play()
+    }
   }
 
   pauseSound() {
@@ -74,7 +81,6 @@ class Sounds {
   }
 
   disableMute() {
-    console.log(document.querySelectorAll('audio'))
     document.querySelectorAll('audio').forEach(audio => audio.muted = false)
   }
 
